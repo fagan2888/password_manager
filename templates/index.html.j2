@@ -1,0 +1,55 @@
+{% extends "layout.html.j2" %}
+{% block title %}
+  Password Management System
+{% endblock %}
+{% block body %}
+    {{ super() }}
+    <h1>View Passwords</h1>
+    <form action="/create">
+      <input type="submit" value="Create new password" /><br />
+    </form>
+    <form action="/" method="post">
+      Add a key to decrypt passwords:<br />
+      <input type="text" name="key" />
+      <input type="submit" value="Send key" />
+    </form>
+    <table>
+      <tr>
+        <th>
+          Username
+        </th>
+        <th>
+          Platform
+        </th>
+        <th>
+          Password
+        </th>
+        <th>
+          Edit
+        </th>
+        <th>
+          Remove
+        </th>
+      </tr>
+      {% for password in passwords %}
+      <tr>
+        <td>
+          {{ password.username }}
+        </td>
+        <td>
+          {{ password.platform }}
+        </td>
+        <td>
+          {{ password.password }}
+        </td>
+        <td>
+          <a href='/edit/{{ password.id }}'>edit</a>
+        </td>
+        <td>
+          <a href='/delete/{{ password.id }}'>delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+
+{% endblock %}

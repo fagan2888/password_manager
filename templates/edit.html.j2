@@ -1,0 +1,22 @@
+{% extends "layout.html.j2" %}
+{% block title %}
+  Password Management System
+{% endblock %}
+{% block body %}
+    {{ super() }}
+    <h1>Edit the password</h1>
+    <form action='/edit/{{password.id}}' method='post'>
+      Username<br />
+      <input type="text" name="username" /><br />
+      Platform<br>
+      <input type="text" name="platform" /><br />
+      Password<br />
+      <input type="text" name="password" /> <br />
+      Key<br />
+      <input type="text" name="key" /> <br />
+      <input type="submit" value="Edit Password" />
+    </form>
+    <form action="/">
+      <input type="submit" value="View passwords" />
+    </form>
+{% endblock %}
